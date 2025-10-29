@@ -60,6 +60,48 @@
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
+/* Mobile: hide the inline nav and show a toggle button */
+.gooey-nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 6px;
+  margin: 0 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .gooey-nav-container nav ul {
+    display: none; /* hide default horizontal nav */
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+    background: rgba(0,0,0,0.6);
+    border-radius: 8px;
+    position: absolute;
+    right: 0;
+    top: 48px;
+    min-width: 160px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  }
+
+  .gooey-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* when open, show the dropdown nav */
+  .gooey-nav-container.open nav ul {
+    display: flex;
+  }
+
+  .gooey-nav-container nav ul li {
+    padding: 8px 12px;
+  }
+}
+
 .gooey-nav-container nav ul li {
   border-radius: 100vw;
   position: relative;

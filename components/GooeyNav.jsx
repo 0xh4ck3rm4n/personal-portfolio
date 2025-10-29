@@ -16,6 +16,7 @@ const GooeyNav = ({
   const filterRef = useRef(null);
   const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
@@ -115,6 +116,8 @@ const GooeyNav = ({
     if (filterRef.current) {
       makeParticles(filterRef.current);
     }
+    // close mobile menu after click
+    if (mobileOpen) setMobileOpen(false);
   };
 
   const handleKeyDown = (e, index) => {
@@ -147,7 +150,18 @@ const GooeyNav = ({
   }, [activeIndex]);
 
   return (
-    <div className="gooey-nav-container" ref={containerRef}>
+    <div className={`gooey-nav-container ${mobileOpen ? 'open' : ''}`} ref={containerRef}>
+      {/* mobile toggle (visible on small screens) */}
+      <button
+        className="gooey-nav-toggle"
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen(v => !v)}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (
