@@ -1,0 +1,32 @@
+.game-root {
+  width: 100%;
+}
+
+.hole {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hole:active {
+  transform: translateY(1px);
+}
+
+.hole.mole {
+  background: radial-gradient(circle at 50% 35%, #7df9ff33 0%, rgba(125,249,255,0.04) 20%, rgba(0,0,0,0.05) 60%);
+  box-shadow: 0 6px 20px rgba(125,249,255,0.06);
+}
+
+.mole-dot {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(180deg, #7df9ff, #00f0ff);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(125,249,255,0.24);
+  display: inline-block;
+}
